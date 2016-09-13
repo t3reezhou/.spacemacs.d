@@ -1,0 +1,24 @@
+;;; config.el --- Ansible Layer functions File for Spacemacs
+;;
+;; Copyright (c) 2012-2016 Sylvain Benner & Contributors
+;;
+;; Author: Brian Hicks <brian@brianthicks.com>
+;; URL: https://github.com/syl20bnr/spacemacs
+;;
+;; This file is not part of GNU Emacs.
+;;
+;;; License: GPLv3
+
+;; detect filenames compatible with Ansible's recommended layout.
+;; http://docs.ansible.com/playbooks_best_practices.html#directory-layout
+
+(add-hook 'before-save-hook 'gofmt-before-save)
+
+(add-hook 'go-mode-hook 'company-mode)
+(add-hook 'go-mode-hook (lambda ()
+  (set (make-local-variable 'company-backends) '(company-go))
+  (company-mode)))
+
+(global-linum-mode t)
+
+(global-set-key (kbd "M-s o") 'occur-dwim)

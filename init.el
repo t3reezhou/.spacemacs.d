@@ -24,21 +24,24 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
+     ivy
      better-defaults
      emacs-lisp
      git
      markdown
      org
-     ;; (shell :variables
+     helm
+     ;; (shell :
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      spell-checking
      syntax-checking
+     t3ree
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
-   ;; packages, then consider creating a layer. You can also put the
+   ;; packages, then co nsider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -107,7 +110,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 22
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -188,7 +191,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -242,7 +245,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
 
 (setq configuration-layer--elpa-archives
-    '(("melpa-cn" . "http://elpa.zilongshanren.com/melpa/")
+    '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
       ("org-cn"   . "http://elpa.zilongshanren.com/org/")
       ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/")))
 
@@ -259,3 +262,13 @@ you should place your code here."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+
+
+(setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
+
+(load custom-file 'no-error 'no-message)
+
+;; use American English as ispell default dictionary
+(ispell-change-dictionary "american" t)
+
+(setq make-backup-files nil)
